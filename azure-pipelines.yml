@@ -1,0 +1,29 @@
+trigger:
+- main
+
+pool:
+  name: AKS Agent
+
+variables:
+  ARM_SERVICE_CONNECTION: 'Azure subscription 1(afd85edf-13c9-4faa-99be-bf7468ed2149)'
+
+stages:
+
+- stage: Terraform_Deploy
+  jobs:
+  - job: Deploy_AKS
+    steps:
+
+    - task: TerraformInstaller@1
+      inputs:
+        terraformVersion: '1.5.0'
+
+    - task: AzureCLI@2
+      inputs:
+        azureSubscription: $(ARM_SERVICE_CONNECTION)
+        scriptType: bash
+        scriptLocation: inlineScript
+        inlineScript: |
+          terraform init
+          terraform plan -out=tfplan
+          terraform apply -auto-approve tfplan

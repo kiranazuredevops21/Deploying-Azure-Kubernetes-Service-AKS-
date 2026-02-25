@@ -9,7 +9,7 @@ steps:
   displayName: Terraform Init
   inputs:
     command: 'init'
-    allowTelemetryCollection: true
+    allowTelemetryCollection: false
 - task: TerraformCLI@2
   displayName: Terraform Plan
   inputs:

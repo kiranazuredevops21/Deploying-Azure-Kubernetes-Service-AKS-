@@ -1,0 +1,11 @@
+aks-terraform-project/
+│
+├── terraform/
+│   ├── main.tf
+│   ├── variables.tf
+│   ├── outputs.tf
+│   ├── provider.tf
+│   └── backend.tf
+│
+├── azure-pipelines.yml
+└── README.md
